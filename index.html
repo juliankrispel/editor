@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style> 
+body{ font-family: sans-serif; font-size: 18px; line-height: 1.6em; }
+*{ padding: 0; margin: 0; }
+html,body{ height: 100%; width: 100%; }
+.editor{ padding: 20px; width: 100%; height: 100%; } 
+#box{ background: black; width: 10px; height: 10px; display: block; position: absolute; left: 10px; top: 10px;}
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div contenteditable class="editor"></div>
+<script src="util.js"></script>
+<script src="stream.js"></script>
+<script src="keyboardStream.js"></script>
+<script src="operationStream.js"></script>
+<script>
+var keyboardStream = new KeyboardStream(document.querySelector('.editor'));
+var operationStream = new OperationStream(keyboardStream);
+
+</script>
+</body>
+</html>
