@@ -5,8 +5,9 @@
         this.keysUp = [];
 
         this._stream = new Stream();
-        this.pipe = this._stream.pipe;
-        this.subscribe = this._stream.subscribe;
+        this._stream.name = 'KeyboardStream';
+        this.pipe = this._stream.pipe.bind(this._stream);
+        this.subscribe = this._stream.subscribe.bind(this._stream);
 
         document.addEventListener('keyup', this.onKeyUp.bind(this));
         document.addEventListener('keydown', this.onKeyDown.bind(this));
@@ -23,7 +24,8 @@
 
     KeyboardStream.prototype.onKeyPress = function(e){
         e.preventDefault();
-        this._stream.read(String.fromCharCode(e.charCode));
+        console.log('hey', this._stream);
+        this._stream.read.apply(this._stream, [String.fromCharCode(e.charCode)]);
     };
 
     window.KeyboardStream = KeyboardStream;
