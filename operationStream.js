@@ -1,4 +1,12 @@
 (function(exports){
+
+    var Operation = function(key, type, ){
+    };
+
+    var operations = {
+        'a': 
+    };
+
     var OperationStream = function(stream){
         this._stream = new Stream(stream, this.transformOperations, 'OperationsStream');
         this.read = this._stream.read.bind(this._stream);
@@ -11,6 +19,7 @@
         console.log('boing', data);
         return data;
     };
+
 
     exports.OperationStream = OperationStream;
 })(window || module.exports);
